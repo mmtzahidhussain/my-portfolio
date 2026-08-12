@@ -181,7 +181,7 @@ const Footer = ({ darkMode }) => {
                 }`}
               >
                 <WhatsappIcon className="w-4 h-4 text-emerald-400" />
-                <span>Chat on WhatsApp (+923057009210)</span>
+                <span>Chat on WhatsApp</span>
               </a>
 
               <a

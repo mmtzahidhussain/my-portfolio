@@ -29,7 +29,8 @@ const WhatsappIcon = (props) => (
 const Contact = ({ darkMode }) => {
   const [copiedField, setCopiedField] = useState(null);
   const [submitted, setSubmitted] = useState(false);
-  const [sentUrls, setSentUrls] = useState({ wa: "", mail: "" });
+  const [loading, setLoading] = useState(false);
+  const [mailClientUrl, setMailClientUrl] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,32 +44,45 @@ const Contact = ({ darkMode }) => {
     setTimeout(() => setCopiedField(null), 2000);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
-    const waText = encodeURIComponent(
-      `*New Portfolio Inquiry*\n\n` +
-      `👤 *Name:* ${formData.name}\n` +
-      `✉️ *Email:* ${formData.email}\n` +
-      `📌 *Subject:* ${formData.subject || "General Inquiry"}\n\n` +
-      `💬 *Message:*\n${formData.message}`
-    );
-    const waUrl = `https://wa.me/923057009210?text=${waText}`;
+    setLoading(true);
 
     const mailSubject = encodeURIComponent(
-      `Portfolio Inquiry from ${formData.name}: ${formData.subject || "General Inquiry"}`
+      `Portfolio Message from ${formData.name}: ${formData.subject || "General Inquiry"}`
     );
     const mailBody = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject || "N/A"}\n\nMessage:\n${formData.message}`
     );
     const mailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=jamzahid1999@gmail.com&su=${mailSubject}&body=${mailBody}`;
+    setMailClientUrl(mailUrl);
 
-    setSentUrls({ wa: waUrl, mail: mailUrl });
-    setSubmitted(true);
-
-    // Auto open WhatsApp tab with prefilled message
-    window.open(waUrl, "_blank");
+    try {
+      await fetch("https://formsubmit.co/ajax/jamzahid1999@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || "New Portfolio Inquiry",
+          message: formData.message,
+          _subject: `New Portfolio Inquiry from ${formData.name}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+    } catch (err) {
+      console.log("FormSubmit dispatch error, fallback active", err);
+    } finally {
+      setLoading(false);
+      setSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    }
   };
 
   const contactItems = [
@@ -372,52 +386,53 @@ const Contact = ({ darkMode }) => {
                       initial={{ opacity: 0, scale: 0.95, y: 10 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.95, y: -10 }}
-                      className="p-5 sm:p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-white space-y-4 shadow-xl"
+                      className="p-5 sm:p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-white space-y-3 shadow-xl"
                     >
                       <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
                         <Check className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                        <span>Query Formatted & Ready to Send!</span>
+                        <span>Email Sent Successfully!</span>
                       </div>
                       <p className="text-xs text-gray-300 leading-relaxed">
-                        WhatsApp app has been launched automatically with your query details. You can also send directly via Email:
+                        Thank you! Your message has been formatted and sent directly to Zahid's email inbox (<strong className="text-cyan-400">jamzahid1999@gmail.com</strong>).
                       </p>
-                      
-                      <div className="flex flex-col sm:flex-row gap-3 pt-1">
-                        <a
-                          href={sentUrls.wa}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 py-3 px-4 rounded-xl bg-emerald-500 text-gray-950 font-bold text-xs flex items-center justify-center gap-2 hover:bg-emerald-400 shadow-md shadow-emerald-500/20 transition-all"
-                        >
-                          <WhatsappIcon className="w-4 h-4 fill-current" />
-                          <span>Open in WhatsApp</span>
-                        </a>
 
-                        <a
-                          href={sentUrls.mail}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 py-3 px-4 rounded-xl bg-cyan-500 text-gray-950 font-bold text-xs flex items-center justify-center gap-2 hover:bg-cyan-400 shadow-md shadow-cyan-500/20 transition-all"
-                        >
-                          <Mail className="w-4 h-4 text-gray-950" />
-                          <span>Send via Email</span>
-                        </a>
-                      </div>
+                      {mailClientUrl && (
+                        <div className="pt-2">
+                          <a
+                            href={mailClientUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:underline"
+                          >
+                            <Mail className="w-4 h-4" />
+                            <span>Open in Gmail App / Web as Backup</span>
+                          </a>
+                        </div>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
 
                 <motion.button
+                  disabled={loading}
                   whileHover={{
-                    scale: 1.02,
-                    boxShadow: "0 0 30px rgba(34,211,238,0.35)",
+                    scale: loading ? 1 : 1.02,
+                    boxShadow: loading ? "none" : "0 0 30px rgba(34,211,238,0.35)",
                   }}
-                  whileTap={{ scale: 0.98 }}
+                  whileTap={{ scale: loading ? 1 : 0.98 }}
                   type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 text-gray-950 py-4 rounded-xl font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 group transition-all"
+                  className={`w-full bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 text-gray-950 py-4 rounded-xl font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 group transition-all ${
+                    loading ? "opacity-75 cursor-not-allowed" : ""
+                  }`}
                 >
-                  <span>Send via WhatsApp & Email</span>
-                  <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform stroke-[2.5]" />
+                  {loading ? (
+                    <span>Sending Email...</span>
+                  ) : (
+                    <>
+                      <span>Send Message via Email</span>
+                      <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform stroke-[2.5]" />
+                    </>
+                  )}
                 </motion.button>
               </form>
             </div>

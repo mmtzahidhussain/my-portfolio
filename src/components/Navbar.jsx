@@ -131,7 +131,9 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           <motion.a
             whileHover={{ scale: 1.04, boxShadow: "0 0 25px rgba(34,211,238,0.4)" }}
             whileTap={{ scale: 0.96 }}
-            href="#contact"
+            href="https://wa.me/923057009210"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 text-gray-950 px-5 py-2.5 rounded-xl text-xs font-extrabold tracking-wide shadow-md shadow-cyan-500/20 transition-all"
           >
             <Briefcase className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -184,7 +186,9 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="https://wa.me/923057009210"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-2 mt-4 bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-950 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-center"
               >

@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Mail,
   ChevronUp,
-  Code2,
   Heart,
   Download,
   Phone,
 } from "lucide-react";
 import cv from "../assets/zahid_hussain_cv.pdf";
+import logoImg from "../assets/logo.png";
 
 const LinkedinIcon = (props) => (
   <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -46,10 +46,10 @@ const Footer = ({ darkMode }) => {
             <motion.a
               href="#home"
               whileHover={{ scale: 1.02 }}
-              className="inline-flex items-center gap-2 text-2xl font-extrabold font-heading"
+              className="inline-flex items-center gap-2.5 text-2xl font-extrabold font-heading"
             >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-400 to-blue-600 flex items-center justify-center text-gray-950 shadow-md">
-                <Code2 className="w-4 h-4 stroke-[2.5]" />
+              <div className="w-9 h-9 rounded-xl overflow-hidden shadow-md border border-cyan-400/30">
+                <img src={logoImg} alt="Zahid Hussain Logo" className="w-full h-full object-cover" />
               </div>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
                 Zahid Hussain

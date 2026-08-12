@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Menu, X, Briefcase, Code2, Sparkles } from "lucide-react";
+import { Sun, Moon, Menu, X, Briefcase, Sparkles } from "lucide-react";
+import logoImg from "../assets/logo.png";
 
 const Navbar = ({ darkMode, setDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,10 +61,10 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           href="#home"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className="flex items-center gap-2 text-xl font-extrabold tracking-tight group"
+          className="flex items-center gap-2.5 text-xl font-extrabold tracking-tight group"
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-gray-950 shadow-md shadow-cyan-500/30 group-hover:rotate-6 transition-transform">
-            <Code2 className="w-5 h-5 text-gray-950 stroke-[2.5]" />
+          <div className="w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-cyan-500/30 group-hover:rotate-6 transition-transform border border-cyan-400/30">
+            <img src={logoImg} alt="Zahid Hussain Logo" className="w-full h-full object-cover" />
           </div>
           <span className="font-heading">
             <span className="text-cyan-400">Zahid</span>

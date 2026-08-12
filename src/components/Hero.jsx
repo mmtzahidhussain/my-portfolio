@@ -270,11 +270,11 @@ const Hero = ({ darkMode }) => {
               <span>Laravel Specialist</span>
             </motion.div>
 
-            {/* Floating Pill 2 - Bottom Left */}
+            {/* Floating Pill 2 - Middle Left */}
             <motion.div
               animate={{ y: [8, -8, 8] }}
               transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-4 z-20 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl text-[10px] sm:text-xs font-bold shadow-xl bg-gray-900/90 border border-blue-500/40 backdrop-blur-md text-white flex items-center gap-1.5 sm:gap-2"
+              className="absolute top-1/2 -left-4 sm:-left-12 -translate-y-1/2 z-20 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl text-[10px] sm:text-xs font-bold shadow-xl bg-gray-900/90 border border-blue-500/40 backdrop-blur-md text-white flex items-center gap-1.5 sm:gap-2"
             >
               <div className="p-1 rounded-lg bg-blue-500/20 text-blue-400">
                 <Database className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
@@ -291,7 +291,7 @@ const Hero = ({ darkMode }) => {
               href="https://wa.me/923057009210?text=Hi%20Zahid,%20I%20visited%20your%20portfolio!"
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute -bottom-5 -right-1 sm:-bottom-6 sm:-right-2 z-20 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl text-[10px] sm:text-xs font-bold shadow-xl bg-gray-900/95 border border-emerald-400/50 backdrop-blur-md text-white flex items-center gap-1.5 sm:gap-2 cursor-pointer"
+              className="absolute -bottom-3 -right-1 sm:-bottom-4 sm:-right-2 z-20 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl text-[10px] sm:text-xs font-bold shadow-xl bg-gray-900/95 border border-emerald-400/50 backdrop-blur-md text-white flex items-center gap-1.5 sm:gap-2 cursor-pointer"
             >
               <div className="p-1 sm:p-1.5 rounded-xl bg-emerald-500 text-gray-950">
                 <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
@@ -301,13 +301,13 @@ const Hero = ({ darkMode }) => {
               <span className="text-emerald-400 font-bold">WhatsApp</span>
             </motion.a>
 
-            {/* Zap Badge - Left */}
+            {/* Zap Badge - Top Left */}
             <motion.div
               animate={{ x: [-5, 5, -5] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/2 -left-8 sm:-left-10 z-20 p-2 sm:p-2.5 rounded-2xl shadow-xl bg-cyan-400 text-gray-950 hidden sm:flex items-center justify-center"
+              className="absolute top-2 -left-2 sm:top-4 sm:-left-4 z-20 p-2 sm:p-2.5 rounded-2xl shadow-xl bg-cyan-400 text-gray-950 flex items-center justify-center"
             >
-              <Zap className="w-4 h-4 sm:w-5 sm:h-5 fill-current stroke-[2.5]" />
+              <Zap className="w-3.5 h-3.5 sm:w-5 sm:h-5 fill-current stroke-[2.5]" />
             </motion.div>
           </div>
         </motion.div>

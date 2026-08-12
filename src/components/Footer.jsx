@@ -233,7 +233,7 @@ const Footer = ({ darkMode }) => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 z-40 p-3.5 rounded-2xl bg-gradient-to-tr from-cyan-400 to-blue-600 text-gray-950 shadow-xl shadow-cyan-500/30 flex items-center justify-center"
+            className="fixed bottom-24 right-6 z-40 p-3.5 rounded-2xl bg-gradient-to-tr from-cyan-400 to-blue-600 text-gray-950 shadow-xl shadow-cyan-500/30 flex items-center justify-center"
             title="Scroll to top"
             aria-label="Scroll to top"
           >

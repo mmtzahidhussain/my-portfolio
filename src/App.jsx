@@ -8,6 +8,7 @@ import Projects from "./components/Projects";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -25,6 +26,7 @@ function App() {
       <Testimonials darkMode={darkMode} />
       <Contact darkMode={darkMode} />
       <Footer darkMode={darkMode} />
+      <WhatsAppWidget />
     </div>
   );
 }

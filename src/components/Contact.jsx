@@ -57,7 +57,7 @@ const Contact = ({ darkMode }) => {
       icon: Mail,
       label: "Email Address",
       value: "jamzahid1999@gmail.com",
-      href: "mailto:jamzahid1999@gmail.com",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=jamzahid1999@gmail.com",
       copyable: true,
       fieldKey: "email",
     },

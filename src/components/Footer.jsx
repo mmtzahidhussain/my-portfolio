@@ -86,7 +86,7 @@ const Footer = ({ darkMode }) => {
                 },
                 {
                   icon: Mail,
-                  href: "mailto:jamzahid1999@gmail.com",
+                  href: "https://mail.google.com/mail/?view=cm&fs=1&to=jamzahid1999@gmail.com",
                   title: "Email",
                 },
                 {
@@ -156,17 +156,17 @@ const Footer = ({ darkMode }) => {
             >
               Direct Actions
             </h4>
-            <div className="space-y-3">
+            <div className="flex flex-col gap-3 w-full">
               <a
                 href={cv}
                 download="Zahid_Hussain_CV.pdf"
-                className={`inline-flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded-xl border transition-all ${
+                className={`w-full flex items-center gap-2.5 text-xs font-bold px-4 py-3 rounded-xl border transition-all ${
                   darkMode
-                    ? "bg-gray-900 border-gray-800 text-cyan-400 hover:border-cyan-400"
-                    : "bg-white border-gray-200 text-cyan-700 hover:border-cyan-500"
+                    ? "bg-gray-900 border-gray-800 text-cyan-400 hover:border-cyan-400 hover:bg-gray-850"
+                    : "bg-white border-gray-200 text-cyan-700 hover:border-cyan-500 hover:bg-gray-50"
                 }`}
               >
-                <Download className="w-3.5 h-3.5" />
+                <Download className="w-4 h-4 text-cyan-400 flex-shrink-0" />
                 <span>Download Curriculum Vitae (PDF)</span>
               </a>
 
@@ -174,26 +174,28 @@ const Footer = ({ darkMode }) => {
                 href="https://wa.me/923057009210"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded-xl border transition-all ${
+                className={`w-full flex items-center gap-2.5 text-xs font-bold px-4 py-3 rounded-xl border transition-all ${
                   darkMode
                     ? "bg-gray-900 border-gray-800 text-emerald-400 hover:border-emerald-400 hover:bg-emerald-500/10"
                     : "bg-white border-gray-200 text-emerald-700 hover:border-emerald-500 hover:bg-emerald-50"
                 }`}
               >
-                <WhatsappIcon className="w-4 h-4 text-emerald-400" />
+                <WhatsappIcon className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <span>Chat on WhatsApp</span>
               </a>
 
               <a
-                href="mailto:jamzahid1999@gmail.com"
-                className={`inline-flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded-xl border transition-all ${
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=jamzahid1999@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full flex items-center gap-2.5 text-xs font-bold px-4 py-3 rounded-xl border transition-all ${
                   darkMode
-                    ? "bg-gray-900 border-gray-800 text-gray-300 hover:text-white hover:border-cyan-400"
-                    : "bg-white border-gray-200 text-gray-700 hover:text-gray-950 hover:border-cyan-500"
+                    ? "bg-gray-900 border-gray-800 text-gray-300 hover:text-white hover:border-cyan-400 hover:bg-gray-850"
+                    : "bg-white border-gray-200 text-gray-700 hover:text-gray-950 hover:border-cyan-500 hover:bg-gray-50"
                 }`}
               >
-                <Mail className="w-3.5 h-3.5" />
-                <span>Send Direct Inquiry</span>
+                <Mail className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                <span>Send Direct Email Inquiry</span>
               </a>
             </div>
           </div>

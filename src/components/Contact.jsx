@@ -29,6 +29,7 @@ const WhatsappIcon = (props) => (
 const Contact = ({ darkMode }) => {
   const [copiedField, setCopiedField] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [sentUrls, setSentUrls] = useState({ wa: "", mail: "" });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,11 +46,29 @@ const Contact = ({ darkMode }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
+
+    const waText = encodeURIComponent(
+      `*New Portfolio Inquiry*\n\n` +
+      `👤 *Name:* ${formData.name}\n` +
+      `✉️ *Email:* ${formData.email}\n` +
+      `📌 *Subject:* ${formData.subject || "General Inquiry"}\n\n` +
+      `💬 *Message:*\n${formData.message}`
+    );
+    const waUrl = `https://wa.me/923057009210?text=${waText}`;
+
+    const mailSubject = encodeURIComponent(
+      `Portfolio Inquiry from ${formData.name}: ${formData.subject || "General Inquiry"}`
+    );
+    const mailBody = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject || "N/A"}\n\nMessage:\n${formData.message}`
+    );
+    const mailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=jamzahid1999@gmail.com&su=${mailSubject}&body=${mailBody}`;
+
+    setSentUrls({ wa: waUrl, mail: mailUrl });
     setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 4000);
+
+    // Auto open WhatsApp tab with prefilled message
+    window.open(waUrl, "_blank");
   };
 
   const contactItems = [
@@ -350,13 +369,40 @@ const Contact = ({ darkMode }) => {
                 <AnimatePresence>
                   {submitted && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold flex items-center gap-2"
+                      initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                      className="p-5 sm:p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-white space-y-4 shadow-xl"
                     >
-                      <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                      <span>Thank you! Your message has been sent successfully. I will get back to you shortly.</span>
+                      <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+                        <Check className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                        <span>Query Formatted & Ready to Send!</span>
+                      </div>
+                      <p className="text-xs text-gray-300 leading-relaxed">
+                        WhatsApp app has been launched automatically with your query details. You can also send directly via Email:
+                      </p>
+                      
+                      <div className="flex flex-col sm:flex-row gap-3 pt-1">
+                        <a
+                          href={sentUrls.wa}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 py-3 px-4 rounded-xl bg-emerald-500 text-gray-950 font-bold text-xs flex items-center justify-center gap-2 hover:bg-emerald-400 shadow-md shadow-emerald-500/20 transition-all"
+                        >
+                          <WhatsappIcon className="w-4 h-4 fill-current" />
+                          <span>Open in WhatsApp</span>
+                        </a>
+
+                        <a
+                          href={sentUrls.mail}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 py-3 px-4 rounded-xl bg-cyan-500 text-gray-950 font-bold text-xs flex items-center justify-center gap-2 hover:bg-cyan-400 shadow-md shadow-cyan-500/20 transition-all"
+                        >
+                          <Mail className="w-4 h-4 text-gray-950" />
+                          <span>Send via Email</span>
+                        </a>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -370,7 +416,7 @@ const Contact = ({ darkMode }) => {
                   type="submit"
                   className="w-full bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 text-gray-950 py-4 rounded-xl font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 group transition-all"
                 >
-                  <span>Send Message</span>
+                  <span>Send via WhatsApp & Email</span>
                   <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform stroke-[2.5]" />
                 </motion.button>
               </form>

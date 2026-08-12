@@ -208,19 +208,20 @@ const Footer = ({ darkMode }) => {
           }`}
         >
           <p
+            className={`text-xs font-semibold flex items-center gap-1.5 ${
+              darkMode ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
+            <span>© {new Date().getFullYear()} Built with</span>
+            <Heart className="w-4 h-4 text-cyan-400 fill-cyan-400 inline animate-pulse" />
+            <span>by Zahid Hussain</span>
+          </p>
+          <p
             className={`text-xs font-medium ${
               darkMode ? "text-gray-500" : "text-gray-500"
             }`}
           >
-            © {new Date().getFullYear()} Zahid Hussain. Built with React, Tailwind CSS & Framer Motion.
-          </p>
-          <p
-            className={`text-xs font-medium flex items-center gap-1 ${
-              darkMode ? "text-gray-500" : "text-gray-500"
-            }`}
-          >
-            <span>Engineered with passion</span>
-            <Heart className="w-3.5 h-3.5 text-cyan-400 fill-current inline" />
+            React • Tailwind CSS • Framer Motion
           </p>
         </div>
       </div>

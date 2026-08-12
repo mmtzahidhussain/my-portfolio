@@ -76,7 +76,7 @@ const Skills = ({ darkMode }) => {
   return (
     <section
       id="skills"
-      className={`py-28 relative overflow-hidden transition-colors duration-300 ${
+      className={`py-16 sm:py-20 lg:py-28 relative overflow-hidden transition-colors duration-300 ${
         darkMode ? "bg-gray-900" : "bg-gray-50"
       }`}
     >
@@ -89,14 +89,14 @@ const Skills = ({ darkMode }) => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 sm:mb-16"
         >
           <div className="flex items-center gap-2 text-cyan-400 text-xs font-extrabold tracking-widest uppercase mb-3">
             <Sparkles className="w-4 h-4" />
@@ -116,7 +116,7 @@ const Skills = ({ darkMode }) => {
         </motion.div>
 
         {/* Categorized Progress Bars Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 mb-10 sm:mb-16">
           {skillCategories.map((category, catIdx) => {
             const Icon = category.icon;
             return (
@@ -126,7 +126,7 @@ const Skills = ({ darkMode }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: catIdx * 0.12 }}
-                className={`p-7 rounded-3xl border ${
+                className={`p-5 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl border ${
                   darkMode
                     ? "bg-gray-800/40 border-gray-700/60 shadow-xl"
                     : "bg-white border-gray-200/80 shadow-lg"
@@ -194,14 +194,14 @@ const Skills = ({ darkMode }) => {
         </div>
 
         {/* Tech Stack Pills & Soft Skills */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8">
           {/* Tech Badges */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className={`lg:col-span-8 p-8 rounded-3xl border ${
+            className={`lg:col-span-8 p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl border ${
               darkMode ? "bg-gray-800/40 border-gray-700/60" : "bg-white border-gray-200/80"
             }`}
           >
@@ -242,7 +242,7 @@ const Skills = ({ darkMode }) => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className={`lg:col-span-4 p-8 rounded-3xl border ${
+            className={`lg:col-span-4 p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl border ${
               darkMode ? "bg-gray-800/40 border-gray-700/60" : "bg-white border-gray-200/80"
             }`}
           >

@@ -92,7 +92,7 @@ const Projects = ({ darkMode }) => {
   return (
     <section
       id="projects"
-      className={`py-28 relative overflow-hidden transition-colors duration-300 ${
+      className={`py-16 sm:py-20 lg:py-28 relative overflow-hidden transition-colors duration-300 ${
         darkMode ? "bg-gray-950" : "bg-white"
       }`}
     >
@@ -105,14 +105,14 @@ const Projects = ({ darkMode }) => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-14"
+          className="mb-10 sm:mb-14"
         >
           <div className="flex items-center gap-2 text-cyan-400 text-xs font-extrabold tracking-widest uppercase mb-3">
             <Sparkles className="w-4 h-4" />
@@ -143,7 +143,7 @@ const Projects = ({ darkMode }) => {
         </motion.div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center gap-2 mb-8 sm:mb-12">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -172,7 +172,7 @@ const Projects = ({ darkMode }) => {
         </div>
 
         {/* Projects Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((p, i) => (
               <motion.div
@@ -194,7 +194,7 @@ const Projects = ({ darkMode }) => {
                   className={`h-2 w-full bg-gradient-to-r ${p.gradient} group-hover:h-3 transition-all duration-300`}
                 />
 
-                <div className="p-8">
+                <div className="p-5 sm:p-6 lg:p-8">
                   {/* Category & Badge */}
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-400">
@@ -270,7 +270,7 @@ const Projects = ({ darkMode }) => {
 
                 {/* Bottom Card Action Link */}
                 {p.live && (
-                  <div className="px-8 pb-8 pt-0">
+                  <div className="px-5 sm:px-6 lg:px-8 pb-5 sm:pb-6 lg:pb-8 pt-0">
                     <motion.a
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}

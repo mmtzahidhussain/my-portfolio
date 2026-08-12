@@ -45,8 +45,8 @@ const Footer = ({ darkMode }) => {
         darkMode ? "bg-gray-950 border-gray-800/80" : "bg-gray-50 border-gray-200"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 sm:gap-10">
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
             <motion.a

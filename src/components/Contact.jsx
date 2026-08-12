@@ -96,7 +96,7 @@ const Contact = ({ darkMode }) => {
   return (
     <section
       id="contact"
-      className={`py-28 relative overflow-hidden transition-colors duration-300 ${
+      className={`py-16 sm:py-20 lg:py-28 relative overflow-hidden transition-colors duration-300 ${
         darkMode ? "bg-gray-950" : "bg-white"
       }`}
     >
@@ -109,14 +109,14 @@ const Contact = ({ darkMode }) => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 sm:mb-16"
         >
           <div className="flex items-center gap-2 text-cyan-400 text-xs font-extrabold tracking-widest uppercase mb-3">
             <Sparkles className="w-4 h-4" />
@@ -135,7 +135,7 @@ const Contact = ({ darkMode }) => {
           <div className="w-20 h-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 mt-4 rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Column: Contact Cards & Copy Click */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -240,7 +240,7 @@ const Contact = ({ darkMode }) => {
             className="lg:col-span-7"
           >
             <div
-              className={`p-8 sm:p-10 rounded-3xl border ${
+              className={`p-5 sm:p-7 lg:p-10 rounded-2xl sm:rounded-3xl border ${
                 darkMode
                   ? "bg-gray-900/50 border-gray-800 shadow-2xl"
                   : "bg-gray-50 border-gray-200/80 shadow-xl"

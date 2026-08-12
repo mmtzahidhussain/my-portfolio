@@ -63,7 +63,7 @@ const Contact = ({ darkMode }) => {
     },
     {
       icon: WhatsappIcon,
-      label: "WhatsApp Direct",
+      label: "WhatsApp",
       value: "+92 305 7009210",
       href: "https://wa.me/923057009210",
       copyable: true,
